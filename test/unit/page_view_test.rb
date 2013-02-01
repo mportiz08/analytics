@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class PageViewTest < ActiveSupport::TestCase
-  test 'the hash field is set correctly' do
+  test 'the digest field is set correctly' do
     page_view = PageView.create({
       :url        => 'http://apple.com',
       :referrer   => 'http://store.apple.com/us',

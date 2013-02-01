@@ -2,6 +2,13 @@ require 'digest'
 
 class PageView < Sequel::Model
   def after_create
+    update_digest
+    super
+  end
+  
+  private
+  
+  def update_digest
     attrs = {
       :id         => self.id,
       :url        => self.url,
@@ -13,6 +20,5 @@ class PageView < Sequel::Model
     
     self.set({:digest => Digest::MD5.hexdigest(attrs)})
     self.save(:digest)
-    super
   end
 end
