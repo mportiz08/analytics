@@ -6,3 +6,12 @@ development:
   password: <%= ENV['MYSQL_PASSWORD'] %>
   host: 127.0.0.1
   port: 3306
+
+test:
+  adapter: mysql2
+  encoding: utf8
+  database: analytics_test
+  username: <%= ENV['MYSQL_USERNAME'] %>
+  password: <%= ENV['MYSQL_PASSWORD'] %>
+  host: 127.0.0.1
+  port: 3306
