@@ -4,5 +4,6 @@ class ReportsController < ApplicationController
   end
 
   def top_referrers
+    render :json => TopReferrerReport.new.build.data
   end
 end
