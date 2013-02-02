@@ -4,7 +4,7 @@ def random_time_from_past_num_days(num_days)
   Time.at ((now.to_f - past.to_f) * rand) + past.to_f
 end
 
-NUM_RECORDS = 1000
+NUM_RECORDS = 1000000
 
 (NUM_RECORDS / 8).times do
   PageView.create({
