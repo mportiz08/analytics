@@ -18,3 +18,5 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'ruby-prof'
+gem 'test-unit'
