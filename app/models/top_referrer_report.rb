@@ -1,7 +1,8 @@
 class TopReferrerReport
   attr_reader :data
   
-  LIMIT = 5
+  URLS_LIMIT      = 10
+  REFERRERS_LIMIT = 5
   
   def initialize
     @data = {}
@@ -26,13 +27,13 @@ class TopReferrerReport
     
     collection = PageView.where(date_matches)
                          .group_and_count(:url)
-                         .order(:count).reverse
+                         .order(:count).limit(URLS_LIMIT).reverse
     collection.each do |view|
       url = { :url => view.url, :visits => view.values[:count] }
       
       referrers = PageView.where(date_matches.merge({ :url => view.url }))
                           .group_and_count(:referrer)
-                          .order(:count).limit(LIMIT).reverse
+                          .order(:count).limit(REFERRERS_LIMIT).reverse
                           .reject { |r| r.referrer.nil? }
       url["referrers"] = []
       referrers.each do |r|
